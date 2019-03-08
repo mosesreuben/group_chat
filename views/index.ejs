@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		 $(document).ready(function (){
+            // this triggers the connection event in our server!
+            var socket = io.connect();
+            // we'll write all the socket stuff after the above line!
+            var user = prompt("Please enter your name:");
+            socket.emit('new_user', {res: user});
+            socket.on('user', function (data){
+                var id = data.user;
+                $("form input").attr("value", id);
+                $('#convos').html('');
+                for(convo in data.res){
+                    $('#convos').append('<p>'+data.res[convo]+'</p>');
+                }
+            });
+            $("form").submit(function(){
+                var message = $("form").serialize();
+                socket.emit("message", {res:message});
+                return false;
+            })
+            socket.on('convos', function (data){
+                $('#convos').html('');
+                for(convo in data.res){
+                    $('#convos').append('<p>'+data.res[convo]+'</p>');
+                }
+            });
+        })
+	</script>
+</head>
+<body>
+	<div id="container">
+        <h1>Welcome to the chat</h1>
+        <div id="convos"></div>
+        <form action="/" method="post">
+            <input type="hidden" name="user">
+            <textarea name="message" placeholder="Input text here"></textarea>
+            <button type="submit">Send</button>
+        </form>
+	</div>
+</body>
+</html>
