@@ -17,9 +17,9 @@ var convos = [];
 var io = require('socket.io').listen(server)  // notice we pass the server object<br>
 // Whenever a connection event happens (the connection event is built in) run the following code
 io.sockets.on('connection', function (socket) {
-  console.log("WE ARE USING SOCKETS!");
-  console.log(socket.id);
-  //all the socket code goes in here!
+	console.log("WE ARE USING SOCKETS!");
+	console.log(socket.id);
+//all the socket code goes in here!
 	socket.on("new_user", function (data){
 	    users.push(data.res);
 	    var current = users.length-1;

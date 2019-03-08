@@ -1,12 +1,11 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="index.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
-		 $(document).ready(function (){
+		$(document).ready(function (){
             // this triggers the connection event in our server!
             var socket = io.connect();
             // we'll write all the socket stuff after the above line!
@@ -35,13 +34,14 @@
 	</script>
 </head>
 <body>
-	<div id="container">
-        <h1>Welcome to the chat</h1>
-        <div id="convos"></div>
+	<div class="container">
+        <h1>Mean stack help chat</h1>
+        <div class="row"></div>
         <form action="/" method="post">
             <input type="hidden" name="user">
             <textarea name="message" placeholder="Input text here"></textarea>
-            <button type="submit">Send</button>
+            <br>
+            <button type="submit" class="badge badge-danger ">Send</button>
         </form>
 	</div>
 </body>
