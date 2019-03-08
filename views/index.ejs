@@ -35,13 +35,16 @@
 </head>
 <body>
 	<div class="container">
-        <h1>Mean stack help chat</h1>
-        <div class="row"></div>
+        <div class="row">
+            <img style="height:50px" class="center-block" src="images/mean.png" alt="logo">
+            <h1 class="col"> stack help chat</h1>
+        </div>
+        <div id="convos"></div>
         <form action="/" method="post">
             <input type="hidden" name="user">
-            <textarea name="message" placeholder="Input text here"></textarea>
+            <textarea name="message" class="form-control" placeholder="Input text here"></textarea>
             <br>
-            <button type="submit" class="badge badge-danger ">Send</button>
+            <button type="submit" class="btn btn-danger ">Send</button>
         </form>
 	</div>
 </body>
